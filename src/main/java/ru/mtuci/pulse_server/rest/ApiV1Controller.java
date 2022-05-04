@@ -40,6 +40,12 @@ public class ApiV1Controller {
         return ResponseEntity.ok().build();
     }
 
+    @DeleteMapping("/user")
+    public ResponseEntity<Void> deleteUser(@RequestHeader(TOKEN_HEADER) String token) {
+        userService.deleteUser(token);
+        return ResponseEntity.ok().build();
+    }
+
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<String> handleIllegalArgument(Exception e) {
         return ResponseEntity.badRequest().body(e.getMessage());

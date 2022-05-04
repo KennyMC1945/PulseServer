@@ -67,6 +67,12 @@ public class UserService {
         userRepo.save(user);
     }
 
+    @Transactional
+    public void deleteUser(String token) {
+        User user = checkToken(token);
+        userRepo.deleteById(user.getId());
+    }
+
     // ===================================================================================================================
     // = Implementation
     // ===================================================================================================================
